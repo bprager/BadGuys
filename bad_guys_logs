@@ -1,0 +1,15 @@
+su bernd bernd
+/home/bernd/bin/*.log {
+    daily
+    size 500k
+    rotate 7
+    compress
+    missingok
+    notifempty
+    create 644 bernd bernd
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl reload logservice.service > /dev/null 2>/dev/null || true
+    endscript
+}
+
